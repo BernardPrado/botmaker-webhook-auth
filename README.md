@@ -21,11 +21,23 @@ próprio. Fica para uma v0.2 se/quando for necessário.
 
 ## Instalação
 
-Pacote não publicado no npm — instale direto do GitHub:
+Pacote não publicado no npm — instale via tarball HTTPS do GitHub, **não**
+via `git+ssh://` nem `github:owner/repo`. Essas duas formas fazem o npm
+tentar `git clone` por SSH internamente (é assim que o `npm-package-arg`
+resolve deps hospedadas no GitHub, mesmo se você escrever `git+https://`) —
+funciona na sua máquina se você tiver chave SSH configurada, mas quebra em
+qualquer build container que não tenha (Railway, CI, etc.), com
+`Permission denied (publickey)`. Achado real durante a integração deste
+pacote no `pingoo-rcs-botmaker-bridge` (2026-08-22).
 
 ```bash
-npm install git+ssh://git@github.com/BernardPrado/botmaker-webhook-auth.git
+npm install https://github.com/BernardPrado/botmaker-webhook-auth/tarball/main
 ```
+
+Por isso **`dist/` é commitado no repo** (não é gitignored) — o tarball é um
+snapshot puro do conteúdo do git, sem passo de build, então se `dist/` não
+estivesse ali o pacote instalaria sem o JS compilado. Sempre que editar
+`src/`, rodar `npm run build` e commitar `dist/` junto.
 
 ## Uso
 
