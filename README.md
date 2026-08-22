@@ -29,9 +29,12 @@ npm install git+ssh://git@github.com/BernardPrado/botmaker-webhook-auth.git
 
 ## Uso
 
-```ts
-import express from "express";
-import { bearerAuth, rateLimit } from "botmaker-webhook-auth";
+Pacote compilado em CommonJS (todos os repos-alvo do portfólio usam `require`,
+não `"type": "module"`):
+
+```js
+const express = require("express");
+const { bearerAuth, rateLimit } = require("botmaker-webhook-auth");
 
 const app = express();
 
