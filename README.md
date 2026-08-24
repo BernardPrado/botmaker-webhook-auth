@@ -73,11 +73,11 @@ tempo:
 bearerAuth({ tokens: [process.env.WEBHOOK_TOKEN_ANTIGO!, process.env.WEBHOOK_TOKEN_NOVO!] });
 ```
 
-## Repos candidatos a adotar isso (da auditoria)
+## Adotado em (auditoria 2026-08)
 
-- `voice-agent-botmaker` — `/mcp/*`, `/process*`, `/send-boleto` (crítico: hoje sem nenhuma auth)
+- `voice-agent-botmaker` — `bearerAuth`+`rateLimit` em `/mcp/*`, `/process*`, `/send-boleto`
 - `pingoo-rcs-botmaker-bridge` — `/webhook/pingoo`, `/webhook/botmaker-outbound`
-- `cannale-tour` — `/carlos-audio`, `/carlos-reset`, `/trigger-intent`
+- `cannale-tour` — `/carlos-audio`, `/carlos-reset` (`/trigger-intent` só com `rateLimit`, é chamado direto do navegador do visitante)
 - `cacau-park` — `/submit`, `/girar`, `/confirmar-desconto` (mais a validação de preço server-side, que isso não resolve)
 - `cannale-loja-webview` — `/submit`, `/abandoned-cart`
 
