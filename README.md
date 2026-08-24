@@ -1,3 +1,11 @@
+---
+type: overview
+title: "botmaker-webhook-auth"
+description: "Middleware Express de autenticação/rate-limit para webhooks e MCP servers expostos no Railway."
+tags: [botmaker, webhook, seguranca]
+updated: 2026-08-22
+---
+
 # botmaker-webhook-auth
 
 Middleware Express compartilhado pra fechar o achado mais repetido na auditoria
@@ -72,7 +80,6 @@ bearerAuth({ tokens: [process.env.WEBHOOK_TOKEN_ANTIGO!, process.env.WEBHOOK_TOK
 - `cannale-tour` — `/carlos-audio`, `/carlos-reset`, `/trigger-intent`
 - `cacau-park` — `/submit`, `/girar`, `/confirmar-desconto` (mais a validação de preço server-side, que isso não resolve)
 - `cannale-loja-webview` — `/submit`, `/abandoned-cart`
-- cada `jarvis/mcp-*` em `botmaker-mcp-server`
 
 `mp-pix-webhook-prevendasbrasildemos11` fica de fora dessa lista — o problema
 lá é falta de verificação de assinatura HMAC do Mercado Pago, não falta de
